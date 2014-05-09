@@ -8,18 +8,18 @@ import juzu.template.Template;
 import javax.inject.Inject;
 import java.io.IOException;
 
-public class MoodSwingApplication
-{
+public class MoodSwingApplication {
 
-  /** . */
-  @Inject
-  @Path("index.gtmpl")
-  Template indexTemplate;
+    /**
+     * .
+     */
+    @Inject
+    @Path("index.gtmpl")
+    Template indexTemplate;
 
-  @View
-  public void index(RenderContext renderContext) throws IOException
-  {
-      indexTemplate.render();
-  }
+    @View
+    public void index(RenderContext renderContext) throws IOException {
+        indexTemplate.render();
+    }
 
 }
