@@ -18,18 +18,18 @@ import org.exoplatform.web.application.RequestContext;
 
 import javax.inject.Inject;
 import java.io.IOException;
+import java.util.logging.Logger;
 
 public class MoodSwingApplication {
 
-    /**
-     * .
-     */
+    private static Logger log = Logger.getLogger("org.exoplatform.addons.portlets.moodswing.MoodSwingApplication");
+
     StatisticsService statisticsService;
     public MoodSwingApplication() {
         try {
             statisticsService = StatisticsLifecycleListener.getInstance().getInstance(StatisticsService.class);
         } catch (Exception e) {
-            e.printStackTrace();
+
         }
     }
 
@@ -50,13 +50,23 @@ public class MoodSwingApplication {
     @Ajax
     @Resource
     public void storeStatus(String status) throws Exception {
-       String remoteUser = RequestContext.getCurrentInstance().getRemoteUser();
-       statisticsService.addEntry("root", "", status, "Mood", "SWING", "", "", "", "");
-       System.out.println(">>>>>>>> DONE: " + statisticsService.getStatistics(0).size());
-       indexTemplate.render();
+        String remoteUser = RequestContext.getCurrentInstance().getRemoteUser();
+        try {
+            statisticsService.addEntry(remoteUser, "", status, "MOOD", "SWING", "", "", "", "");
+
+        } catch (Exception E) {
+
+            statisticsService.addEntry(remoteUser, "", status, "MOOD", "SWING", "", "", "", "");
+
+        }
+        log.info("##### Statistics count" + statisticsService.getStatistics(0).size());
+
+        addActivity(remoteUser,status);
+
+        indexTemplate.render();
     }
 
-    /*private void addActivity (String username, String message) throws Exception {
+    private void addActivity (String username, String message) throws Exception {
 
         Identity identity = identityManager.getOrCreateIdentity(OrganizationIdentityProvider.NAME, username,false);
         ExoSocialActivity activity = new ExoSocialActivityImpl();
@@ -67,6 +77,6 @@ public class MoodSwingApplication {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }*/
+    }
 
 }

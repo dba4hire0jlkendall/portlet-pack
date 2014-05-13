@@ -36,8 +36,7 @@
             <groupId>org.exoplatform.addons.statistics</groupId>
             <artifactId>exo-addons-statistics-api</artifactId>
             <version>0.1.0-SNAPSHOT</version>
-            <systemPath>${basedir}/src/lib/exo-addons-statistics-api-0.1.0-SNAPSHOT.jar</systemPath>
-            <scope>system</scope>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.exoplatform.platform</groupId>
@@ -151,19 +150,6 @@
         <plugins>
             <plugin>
                 <artifactId>maven-war-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-war-plugin</artifactId>
-                <version>2.0.2</version>
-                <configuration>
-                    <webResources>
-                        <resource>
-                            <directory>${basedir}/src/lib</directory>
-                            <targetPath>WEB-INF/lib</targetPath>
-                        </resource>
-                    </webResources>
-                </configuration>
             </plugin>
         </plugins>
     </build>
