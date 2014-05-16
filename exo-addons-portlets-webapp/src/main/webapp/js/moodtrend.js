@@ -1,5 +1,7 @@
 (function($) {
     $(document).ready(function(){
+//       $("#mood-overhappy").html($('.mood-trend-portlet').jzLoad("MoodTrendApplication.getMoodTrendStats()", {"moodType":"overhappy"}));
+        alert($('.mood-trend-portlet').jzLoad("MoodTrendApplication.getMoodTrendStats()", {"moodType":"overhappy"}));
 
         var pieData = [
             {

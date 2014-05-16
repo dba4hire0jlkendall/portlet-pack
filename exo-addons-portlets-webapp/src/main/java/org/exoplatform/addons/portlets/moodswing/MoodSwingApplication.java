@@ -25,11 +25,12 @@ public class MoodSwingApplication {
     private static Logger log = Logger.getLogger("org.exoplatform.addons.portlets.moodswing.MoodSwingApplication");
 
     StatisticsService statisticsService;
+
     public MoodSwingApplication() {
         try {
             statisticsService = StatisticsLifecycleListener.getInstance().getInstance(StatisticsService.class);
         } catch (Exception e) {
-
+            log.info("##### Statistics Service initialization error");
         }
     }
 
@@ -51,24 +52,25 @@ public class MoodSwingApplication {
     @Resource
     public void storeStatus(String status) throws Exception {
         String remoteUser = RequestContext.getCurrentInstance().getRemoteUser();
+        String message = null;
+
         try {
             statisticsService.addEntry(remoteUser, "", status, "MOOD", "SWING", "", "", "", "");
+            log.info("##### Statistics count" + statisticsService.getStatistics(0).size());
+            message = "I feel I am " + status + ".";
+            addActivity(remoteUser, message);
 
-        } catch (Exception E) {
+        } catch (Exception e) {
 
-            statisticsService.addEntry(remoteUser, "", status, "MOOD", "SWING", "", "", "", "");
+            log.info("##### Statistics Service usage error");
 
         }
-        log.info("##### Statistics count" + statisticsService.getStatistics(0).size());
-
-        addActivity(remoteUser,status);
-
         indexTemplate.render();
     }
 
-    private void addActivity (String username, String message) throws Exception {
+    private void addActivity(String username, String message) throws Exception {
 
-        Identity identity = identityManager.getOrCreateIdentity(OrganizationIdentityProvider.NAME, username,false);
+        Identity identity = identityManager.getOrCreateIdentity(OrganizationIdentityProvider.NAME, username, false);
         ExoSocialActivity activity = new ExoSocialActivityImpl();
         activity.setTitle(message);
         activity.setUserId(identity.getId());

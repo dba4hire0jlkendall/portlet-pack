@@ -1,115 +1,52 @@
-@import "image-picker";
-
-#selectionBox {
-  margin: 9px;
-}
-
-div.icons-set {
-  margin: 9px;
-  text-align: right;
-}
-
-/*
-  .bubble {
-    position: relative;
-    background-color:#eee;
-    margin: 0;
-    padding:10px;
-    text-align:left;
-    -moz-border-radius:5px;
-    -webkit-border-radius:5px;
-    -webkit-box-shadow: 0px 0 3px rgba(0,0,0,0.25);
-    -moz-box-shadow: 0px 0 3px rgba(0,0,0,0.25);
-    box-shadow: 0px 0 3px rgba(0,0,0,0.25);
-    margin: 20px 9px 9px 9px;
-  }
-  .bubble:after {
-    position: absolute;
-    display: block;
-    content: "";
-    border-color: transparent transparent #eee transparent;
-    border-style: solid;
-    border-width: 10px;
-    height:0;
-    width:0;
-    position:absolute;
-    bottom:40px;
-    left:2em;
-  }
-*/
-
-.user-info img {
-  height: 70px;
-  width: 70px;
-  border-radius: 35px;
-  margin: 9px;
-}
-
-.alert-info {
-  margin: 9px;
-}
-
-.panel-heading {
-  text-align: center;
-}
-
-.panel-body {
-  padding: 0px !important;
-}
-
-div.thumbnail {
-  margin: 0;
-}
-
-.image_picker_image {
-  max-width: 140px;
-  max-height: 100px;
-  background-color: #ffffff;
-}
-
-.image_picker_image:hover {
-  cursor: pointer;
-}
-
-.thumbnail img {
-  width: 25px;
-}
-
-.thumbnail p {
-  text-align: center;
-  font-size: 12px;
-}
-
-.MoodSwingPortlet ul {
-  text-align: center;
-  margin: 0 auto;
-}
-
-ul.thumbnails.image_picker_selector li {
-  margin: 0;
+.mood, .mood:hover {
+  display: inline !important;
+  line-height: 26px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 25px;
   width: 100%;
 }
 
-.thumbnail.selected p {
-  color: #ffffff;
+.moods-container {
+  width: 100%;
 }
 
-.orange {
+.overhappy {
   background-color: #ffda0f;
+
 }
 
-.green {
+.happy {
   background-color: #cffe0f;
+
 }
 
-.blue {
+.sleepy {
   background-color: #30dafe;
+
 }
 
-.pink {
+.unhappy {
   background-color: #ff008a;
+
 }
 
-.purple {
+.angry {
   background-color: #f21be5;
+
+}
+.overhappy, .overhappy:hover {
+  background-image: url('/portlet-pack/skin/images/icons/overhappy.png');
+}
+.happy, .happy:hover {
+  background-image: url('/portlet-pack/skin/images/icons/happy.png');
+}
+.sleepy, .sleepy:hover {
+  background-image: url('/portlet-pack/skin/images/icons/sleepy.png');
+}
+.unhappy, .unhappy:hover {
+  background-image: url('/portlet-pack/skin/images/icons/unhappy.png');
+}
+.angry, .angry:hover {
+  background-image: url('/portlet-pack/skin/images/icons/angry.png');
 }

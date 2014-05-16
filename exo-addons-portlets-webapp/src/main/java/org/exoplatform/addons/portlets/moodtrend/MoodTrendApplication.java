@@ -19,25 +19,56 @@
 package org.exoplatform.addons.portlets.moodtrend;
 
 import juzu.Path;
+import juzu.Resource;
 import juzu.View;
 import juzu.request.RenderContext;
 import juzu.template.Template;
+import org.exoplatform.addons.statistics.api.bo.StatisticBO;
+import org.exoplatform.addons.statistics.api.services.StatisticsService;
+import org.exoplatform.addons.statistics.api.web.listener.StatisticsLifecycleListener;
+import org.exoplatform.commons.juzu.ajax.Ajax;
 
 import javax.inject.Inject;
 import java.io.IOException;
+import java.util.List;
+import java.util.logging.Logger;
 
-public class MoodTrendApplication
-{
+public class MoodTrendApplication {
+    private static Logger log = Logger.getLogger("org.exoplatform.addons.portlets.moodtrend.MoodTrendApplication");
 
-  /** . */
-  @Inject
-  @Path("index.gtmpl")
-  Template indexTemplate;
+    StatisticsService statisticsService;
 
-  @View
-  public void index(RenderContext renderContext) throws IOException
-  {
-      indexTemplate.render();
-  }
+    public MoodTrendApplication() {
+        try {
+            statisticsService = StatisticsLifecycleListener.getInstance().getInstance(StatisticsService.class);
+        } catch (Exception e) {
+            log.info("##### Statistics Service initialization error");
+        }
+    }
 
+    /**
+     * .
+     */
+    @Inject
+    @Path("index.gtmpl")
+    Template indexTemplate;
+
+    @View
+    public void index(RenderContext renderContext) throws IOException {
+        indexTemplate.render();
+    }
+
+    @Ajax
+    @Resource
+    public long getMoodTrendStats(String moodType) throws Exception {
+        List<StatisticBO> statisticBOs = null;
+        try {
+            statisticBOs = statisticsService.filter(null, null, null, moodType, null, null, null, false, 0);
+        } catch (Exception E) {
+            log.info("##### Statistics Service usage error");
+        }
+        log.info("##### Statistics :: Mood Trend [" + moodType + "] :: " + statisticBOs.size());
+        indexTemplate.render();
+        return statisticBOs.size();
+    }
 }

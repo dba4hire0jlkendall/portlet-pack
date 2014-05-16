@@ -19,7 +19,8 @@
 @Assets(
         location = AssetLocation.SERVER,
         scripts = {
-                @Script(src = "js/Chart.min.js", id = "Chart"),
+                @Script(src = "js/jquery-1.8.3.min.js", id = "jquery"),
+                @Script(src = "js/Chart.min.js", id = "Chart", depends = "jquery" ),
                 @Script(src = "js/moodtrend.js", id = "moodtrend", depends = "Chart")
 
         },
