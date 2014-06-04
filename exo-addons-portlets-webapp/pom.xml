@@ -34,7 +34,7 @@
     <dependencies>
         <dependency>
             <groupId>org.exoplatform.addons.statistics</groupId>
-            <artifactId>exo-addons-statistics-api</artifactId>
+            <artifactId>exo-addons-statistics-persistence-spi</artifactId>
             <version>0.1.0-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
@@ -151,6 +151,7 @@
             <plugin>
                 <artifactId>maven-war-plugin</artifactId>
             </plugin>
+<!--
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
@@ -164,6 +165,7 @@
                     </webResources>
                 </configuration>
             </plugin>
+-->
         </plugins>
     </build>
 </project>

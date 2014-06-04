@@ -23,9 +23,9 @@ import juzu.Resource;
 import juzu.View;
 import juzu.request.RenderContext;
 import juzu.template.Template;
-import org.exoplatform.addons.statistics.api.bo.StatisticBO;
-import org.exoplatform.addons.statistics.api.services.StatisticsService;
-import org.exoplatform.addons.statistics.api.web.listener.StatisticsLifecycleListener;
+import org.exoplatform.addons.persistence.web.listener.GuiceManager;
+import org.exoplatform.addons.persistence.bo.StatisticBO;
+import org.exoplatform.addons.persistence.services.StatisticsService;
 import org.exoplatform.commons.juzu.ajax.Ajax;
 
 import javax.inject.Inject;
@@ -40,7 +40,7 @@ public class MoodTrendApplication {
 
     public MoodTrendApplication() {
         try {
-            statisticsService = StatisticsLifecycleListener.getInstance().getInstance(StatisticsService.class);
+            statisticsService = GuiceManager.getInstance().getInstance(StatisticsService.class);
         } catch (Exception e) {
             log.info("##### Statistics Service initialization error");
         }

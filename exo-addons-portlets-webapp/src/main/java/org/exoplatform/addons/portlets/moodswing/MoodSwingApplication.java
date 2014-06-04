@@ -5,8 +5,8 @@ import juzu.Resource;
 import juzu.View;
 import juzu.request.RenderContext;
 import juzu.template.Template;
-import org.exoplatform.addons.statistics.api.services.StatisticsService;
-import org.exoplatform.addons.statistics.api.web.listener.StatisticsLifecycleListener;
+import org.exoplatform.addons.persistence.services.StatisticsService;
+import org.exoplatform.addons.persistence.web.listener.GuiceManager;
 import org.exoplatform.commons.juzu.ajax.Ajax;
 import org.exoplatform.social.core.activity.model.ExoSocialActivity;
 import org.exoplatform.social.core.activity.model.ExoSocialActivityImpl;
@@ -28,7 +28,7 @@ public class MoodSwingApplication {
 
     public MoodSwingApplication() {
         try {
-            statisticsService = StatisticsLifecycleListener.getInstance().getInstance(StatisticsService.class);
+            statisticsService = GuiceManager.getInstance().getInstance(StatisticsService.class);
         } catch (Exception e) {
             log.info("##### Statistics Service initialization error");
         }
