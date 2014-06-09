@@ -4,7 +4,7 @@
   <parent>
     <artifactId>addons-parent-pom</artifactId>
     <groupId>org.exoplatform.addons</groupId>
-    <version>2</version>
+    <version>3</version>
     <relativePath />
   </parent>
   <groupId>org.exoplatform.addons.portlets</groupId>
@@ -66,30 +66,6 @@
         <groupId>org.apache.commons</groupId>
         <artifactId>commons-lang3</artifactId>
         <version>${commons-lang3.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.exoplatform.addons.demo</groupId>
-        <artifactId>exo-addons-demo-extension-webapp</artifactId>
-        <version>${project.version}</version>
-        <type>war</type>
-      </dependency>
-      <dependency>
-        <groupId>org.exoplatform.addons.demo</groupId>
-        <artifactId>exo-addons-demo-extension-webapp</artifactId>
-        <version>${project.version}</version>
-        <type>war</type>
-      </dependency>
-      <dependency>
-        <groupId>org.exoplatform.addons.demo</groupId>
-        <artifactId>exo-addons-demo-extension-config</artifactId>
-        <version>${project.version}</version>
-        <type>jar</type>
-      </dependency>
-      <dependency>
-        <groupId>org.exoplatform.addons.demo</groupId>
-        <artifactId>exo-addons-demo-extension-pkg</artifactId>
-        <version>${project.version}</version>
-        <type>pom</type>
       </dependency>
       <!-- Import versions from platform project -->
       <dependency>
